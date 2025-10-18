@@ -61,14 +61,13 @@ a {
 
 .main-header {
     display: flex;
-    min-height: 100vh;
     background-color: var(--background);
 }
 
 .sidebar {
     background-color: #e6681f;
-    width: 80px;
     display: flex;
+    width: 5%;
     justify-content: center;
     padding-top: 150px;
 }
@@ -94,10 +93,10 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 100px;
+    /* padding-top: 100px;
     padding-right: 100px;
-    padding-left: 80px;
-    flex-grow: 1;
+    padding-left: 80px; */
+    width: 95%;
 }
 
 .text-container {
