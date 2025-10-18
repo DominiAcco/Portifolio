@@ -1,0 +1,364 @@
+/* ==================================== */
+/* 1. RESET E VARIÁVEIS GLOBAIS         */
+/* ==================================== */
+
+:root {
+    /* Variáveis para light mode (padrão) */
+    --background: #ffffff;
+    --foreground: #171717;
+    --accent-color: #e6681f;
+    /* Cor Laranja de Destaque */
+    --main-bg: #262626;
+    /* Cor de fundo da seção principal */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Variáveis para dark mode */
+        --background: #e6681f;
+        --foreground: #ededed;
+    }
+
+    html {
+        color-scheme: dark;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    /* Garante que o body ocupe a altura total para o layout funcionar */
+    min-height: 100vh;
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ==================================== */
+/* 2. LAYOUT PRINCIPAL (Home Component) */
+/* ==================================== */
+
+.main-wrapper {
+    display: flex;
+    /* Alinha a barra lateral e o conteúdo lado a lado */
+    min-height: 100vh;
+    /* REMOVIDO: background-color: var(--main-bg); */
+}
+
+/* O content-area agora leva o fundo escuro do conteúdo principal */
+.content-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-bg);
+    /* Fundo escuro */
+}
+
+/* ==================================== */
+/* 3. SOCIAL BAR (Sidebar Component)    */
+/* ==================================== */
+
+/* A barra lateral de links sociais agora é maior e centraliza os itens */
+.social-sidebar {
+    background-color: var(--accent-color);
+    /* Fundo Laranja */
+    width: 15%;
+    min-width: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Os links sociais (ícones) agora são brancos */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    font-size: 50px;
+    padding-top: 250px;
+    color: var(--foreground);
+    /* Ícones Brancos/Claros */
+}
+
+/* ==================================== */
+/* 4. NAVBAR E NAVEGAÇÃO                */
+/* ==================================== */
+
+.navbar-container {
+    /* Adicione esta classe ao componente Navbar */
+    width: 100%;
+    padding: 20px 50px 0 0;
+    /* Espaçamento: topo, direita (50px), baixo, esquerda (0) */
+    display: flex;
+    justify-content: flex-end;
+    /* Alinha os links à direita */
+    background-color: var(--main-bg);
+    /* Garante que a cor de fundo seja consistente */
+}
+
+.links_nav {
+    color: #ffffff;
+    list-style-type: none;
+    font-weight: bold;
+    font-size: xx-large;
+    /* Ajustado de xx-large para melhor proporção */
+    display: flex;
+    gap: 150px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    /* Pequeno espaçamento vertical */
+}
+
+.active-link {
+    color: var(--accent-color);
+    list-style-type: none;
+}
+
+/* ==================================== */
+/* 5. HERO SECTION (Hero Component)     */
+/* ==================================== */
+
+.intro-section {
+    display: flex;
+    align-items: center;
+    /* Centraliza verticalmente o texto e a foto */
+    justify-content: space-between;
+    padding: 100px 100px 0 100px;
+    /* Ajuste no espaçamento interno */
+    flex-grow: 1;
+    /* Ocupa o restante do espaço vertical do content-area */
+}
+
+.text-container {
+    max-width: 500px;
+}
+
+.name {
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--foreground);
+    margin-bottom: 20px;
+}
+
+.accent-color {
+    color: var(--accent-color);
+}
+
+.description {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #ccc;
+    font-weight: bold;
+    max-width: 400px;
+    /* Removido o margin-left que causava desalinhamento */
+}
+
+.photo-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    /* Adicionado padding para garantir que a bolha laranja caiba */
+    padding: 10px;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50% 50% 50% 10%;
+    position: relative;
+}
+
+/* A bolha laranja atrás da foto */
+.photo-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    right: 340px;
+    width: 100px;
+    /* Aumentado um pouco o tamanho */
+    height: 100px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+}
+
+/* ==================================== */
+/* 6. FOOTER                            */
+/* ==================================== */
+
+footer {
+    background-color: #171717;
+    color: #ededed;
+    padding: 60px 50px;
+    border-top: 2px solid #333333;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Centraliza o conteúdo do footer */
+}
+
+/* Base de coluna, garantindo que não quebre em telas maiores */
+.footer-col {
+    flex-basis: 30%;
+}
+
+.footer-col-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-logo {
+    font-size: 32px;
+    font-weight: 900;
+    color: #ededed;
+}
+
+.copyright {
+    font-size: 14px;
+    color: #aaaaaa;
+}
+
+.footer-col-center {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    color: #cccccc;
+    padding-top: 10px;
+}
+
+.footer-col-contact h4 {
+    font-size: 20px;
+    color: #ededed;
+    margin-bottom: 25px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.contact-icon {
+    font-size: 24px;
+    color: var(--accent-color);
+    min-width: 24px;
+}
+
+.contact-item a {
+    color: #ededed;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* ==================================== */
+/* 7. PROJETOS (Projects Component)     */
+/* ==================================== */
+
+.projects-section {
+    padding: 300px 100px;
+    /* Mesma margem do Hero para alinhamento */
+    width: 100%;
+    color: var(--foreground);
+    background-color: var(--main-bg);
+}
+
+.projects-main-title {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 50px;
+    color: var(--foreground);
+}
+
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    /* Para empilhar os projetos verticalmente */
+    gap: 80px;
+    /* Espaço entre cada projeto/card */
+    overflow: hidden;
+    /* Garante que não haja barra de rolagem lateral se for um carrossel */
+}
+
+.project-card {
+    background-color: #242424; 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Para alternar a ordem (imagem à esquerda no segundo card, se desejar) */
+.project-card:nth-child(2) .project-details {
+    flex-direction: row-reverse; 
+}
+
+
+.project-details {
+    display: flex;
+    align-items: center; 
+    gap: 30px; 
+}
+
+.project-tagline {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.4;
+    color: #ededed;
+    margin-bottom: 30px;
+}
+
+.project-button {
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.project-button:hover {
+    background-color: darken(var(--accent-color), 10%);
+    /* Use uma cor um pouco mais escura */
+}
+
+.project-image-container {
+    flex-basis: 50%; /* Define que a imagem ocupa 50% do card */
+}
+
+.project-image {
+    width: 100%; /* A imagem preenche 100% do CONTAINER dela (50% do card) */
+    border-radius: 5%;
+    height: auto; /* Mantém a proporção */
+}
